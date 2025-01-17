@@ -1,4 +1,4 @@
-// Import rewuired module from the discord.js library
+// Import required module from the discord.js library
 const { Client, GatewayIntentBits } = require("discord.js");
 // Import the dotenv module to load environment variables from .env file
 require("dotenv").config();
