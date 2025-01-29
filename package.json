@@ -2,6 +2,7 @@
   "name": "schedule_bot",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +14,7 @@
     "discord.js": "^14.17.3",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "luxon": "^3.5.0",
     "mongoose": "^8.9.5",
     "node-cron": "^3.0.3"
   }
