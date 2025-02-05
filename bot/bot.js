@@ -12,29 +12,13 @@ import {
 } from "discord.js";
 
 import dotenv from "dotenv";
-import mongoose from "mongoose";
+
+import { connectToDatabase } from "./utils/database.js";
 import { DateTime } from "luxon";
 
 import Schedule from "../backend/models/scheduleModel.js"; // Ensure this uses `.js`
 import { startScheduler } from "../backend/scheduler.js"; // Import scheduler
 dotenv.config();
-
-const MONGO_URI = process.env.MONGO_URI;
-
-// Ensure bot connects to MongoDB before inserting data
-async function connectToDatabase() {
-  if (mongoose.connection.readyState === 0) {
-    try {
-      await mongoose.connect(MONGO_URI, {
-        serverSelectionTimeoutMS: 30000,
-      });
-      console.log("✅ Bot connected to MongoDB");
-    } catch (error) {
-      console.error("❌ Bot MongoDB connection error:", error);
-      process.exit(1); // Exit if unable to connect
-    }
-  }
-}
 
 await connectToDatabase(); // Ensure connection before proceeding
 
@@ -192,6 +176,7 @@ client.on("interactionCreate", async (interaction) => {
 
   try {
     const schedule = new Schedule({
+      userId: interaction.user.id,
       message,
       channelId: selectedChannelId, // ✅ Store the selected channel
       scheduledTime: utcTime.toJSDate(), // Store in UTC
