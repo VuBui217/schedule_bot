@@ -2,8 +2,9 @@ import { REST, Routes } from "discord.js";
 import dotenv from "dotenv";
 dotenv.config();
 import { scheduleCommand } from "./schedule.js";
+import { editCommand } from "./edit.js";
 
-const commands = [scheduleCommand.toJSON()];
+const commands = [scheduleCommand.toJSON(), editCommand.toJSON()];
 
 export async function registerCommands() {
   const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
