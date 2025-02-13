@@ -8,6 +8,11 @@ import {
   handleEditSelect,
   handleEditModalSubmit,
 } from "../handlers/editHandler.js";
+import {
+  deleteHandler,
+  handleDeleteModalSubmit,
+  handleDeleteSelect,
+} from "./deleteHandler.js";
 //import { schedule } from "node-cron";
 
 export async function handleInteraction(interaction) {
@@ -44,5 +49,21 @@ export async function handleInteraction(interaction) {
     interaction.customId.startsWith("editScheduleModal_")
   ) {
     await handleEditModalSubmit(interaction);
+  }
+  if (interaction.isCommand() && interaction.commandName === "delete") {
+    await deleteHandler(interaction);
+  }
+  if (
+    interaction.isStringSelectMenu() &&
+    interaction.customId === "deleteScheduleSelect"
+  ) {
+    await handleDeleteSelect(interaction);
+  }
+
+  if (
+    interaction.isModalSubmit() &&
+    interaction.customId.startsWith("deleteConfirmModal_")
+  ) {
+    await handleDeleteModalSubmit(interaction);
   }
 }
