@@ -3,8 +3,13 @@ import dotenv from "dotenv";
 dotenv.config();
 import { scheduleCommand } from "./schedule.js";
 import { editCommand } from "./edit.js";
+import { deleteCommand } from "./delete.js";
 
-const commands = [scheduleCommand.toJSON(), editCommand.toJSON()];
+const commands = [
+  scheduleCommand.toJSON(),
+  editCommand.toJSON(),
+  deleteCommand.toJSON(),
+];
 
 export async function registerCommands() {
   const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
