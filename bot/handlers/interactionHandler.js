@@ -1,4 +1,8 @@
-import { scheduleHandler } from "../handlers/scheduleHandler.js";
+import {
+  scheduleHandler,
+  handleChannelSelect,
+  handleModalSummit,
+} from "../handlers/scheduleHandler.js";
 import {
   editHandler,
   handleEditSelect,
@@ -15,14 +19,14 @@ export async function handleInteraction(interaction) {
     interaction.isChannelSelectMenu() &&
     interaction.customId === "channelSelect"
   ) {
-    await scheduleHandler(interaction);
+    await handleChannelSelect(interaction);
   }
 
   if (
     interaction.isModalSubmit() &&
     interaction.customId.startsWith("scheduleModal_")
   ) {
-    await scheduleHandler(interaction);
+    await handleModalSummit(interaction);
   }
   if (interaction.isCommand() && interaction.commandName === "edit") {
     await editHandler(interaction);

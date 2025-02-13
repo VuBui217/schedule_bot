@@ -15,7 +15,7 @@ export async function editHandler(interaction) {
     if (userSchedules.length === 0) {
       return interaction.reply({
         content: "❌ You don't have any scheduled messages to edit.",
-        ephemeral: true,
+        flags: 64,
       });
     }
 
@@ -36,13 +36,13 @@ export async function editHandler(interaction) {
     await interaction.reply({
       content: "📌 Select a scheduled message to edit:",
       components: [actionRow],
-      ephemeral: true,
+      flags: 64,
     });
   } catch (error) {
     console.error("Error fetching scheduled messages:", error.message);
     interaction.reply({
       content: "❌ Error retrieving scheduled messages.",
-      ephemeral: true,
+      flags: 64,
     });
   }
 }
@@ -56,7 +56,7 @@ export async function handleEditSelect(interaction) {
     if (!schedule) {
       return interaction.reply({
         content: "❌ The selected schedule was not found.",
-        ephemeral: true,
+        flags: 64,
       });
     }
 
@@ -106,7 +106,7 @@ export async function handleEditSelect(interaction) {
     console.error("Error fetching schedule for edit:", error.message);
     interaction.reply({
       content: "❌ Error loading schedule details.",
-      ephemeral: true,
+      flags: 64,
     });
   }
 }
