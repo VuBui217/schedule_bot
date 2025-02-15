@@ -4,11 +4,13 @@ dotenv.config();
 import { scheduleCommand } from "./schedule.js";
 import { editCommand } from "./edit.js";
 import { deleteCommand } from "./delete.js";
+import { listCommand } from "./list.js";
 
 const commands = [
   scheduleCommand.toJSON(),
   editCommand.toJSON(),
   deleteCommand.toJSON(),
+  listCommand.toJSON(),
 ];
 
 export async function registerCommands() {
