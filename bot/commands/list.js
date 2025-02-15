@@ -4,5 +4,5 @@
 import { SlashCommandBuilder } from "discord.js";
 
 export const listCommand = new SlashCommandBuilder()
-  .setName("delete")
+  .setName("list")
   .setDescription("List all scheduled messages");

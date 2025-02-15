@@ -13,6 +13,7 @@ import {
   handleDeleteModalSubmit,
   handleDeleteSelect,
 } from "./deleteHandler.js";
+import { listHandler } from "./listHandler.js";
 //import { schedule } from "node-cron";
 
 export async function handleInteraction(interaction) {
@@ -23,6 +24,8 @@ export async function handleInteraction(interaction) {
       await editHandler(interaction);
     } else if (interaction.commandName === "delete") {
       await deleteHandler(interaction);
+    } else if (interaction.commandName === "list") {
+      await listHandler(interaction);
     }
     return;
   }
