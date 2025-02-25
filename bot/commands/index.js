@@ -5,12 +5,14 @@ import { scheduleCommand } from "./schedule.js";
 import { editCommand } from "./edit.js";
 import { deleteCommand } from "./delete.js";
 import { listCommand } from "./list.js";
+import { viewCommand } from "./view.js";
 
 const commands = [
   scheduleCommand.toJSON(),
   editCommand.toJSON(),
   deleteCommand.toJSON(),
   listCommand.toJSON(),
+  viewCommand.toJSON(),
 ];
 
 export async function registerCommands() {
