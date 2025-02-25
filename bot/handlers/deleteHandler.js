@@ -14,7 +14,7 @@ export async function deleteHandler(interaction) {
     if (userSchedules.length === 0) {
       return interaction.reply({
         content: "❌ You don't have any scheduled messages to delete.",
-        //flags: 64,
+        flags: 64,
       });
     }
 
@@ -35,13 +35,13 @@ export async function deleteHandler(interaction) {
     await interaction.reply({
       content: "🗑️ Select a scheduled message to delete:",
       components: [actionRow],
-      //flags: 64,
+      flags: 64,
     });
   } catch (error) {
     console.error("Error fetching scheduled messages:", error.message);
     interaction.reply({
       content: "❌ Error retrieving scheduled messages.",
-      //flags: 64,
+      flags: 64,
     });
   }
 }

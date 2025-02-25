@@ -14,6 +14,7 @@ import {
   handleDeleteSelect,
 } from "./deleteHandler.js";
 import { listHandler } from "./listHandler.js";
+import { handleViewSelect, viewHandler } from "./viewHandler.js";
 //import { schedule } from "node-cron";
 
 export async function handleInteraction(interaction) {
@@ -26,6 +27,8 @@ export async function handleInteraction(interaction) {
       await deleteHandler(interaction);
     } else if (interaction.commandName === "list") {
       await listHandler(interaction);
+    } else if (interaction.commandName === "view") {
+      await viewHandler(interaction);
     }
     return;
   }
@@ -42,6 +45,8 @@ export async function handleInteraction(interaction) {
       await handleEditSelect(interaction);
     } else if (interaction.customId === "deleteScheduleSelect") {
       await handleDeleteSelect(interaction);
+    } else if (interaction.customId === "viewScheduleSelect") {
+      await handleViewSelect(interaction);
     }
     return;
   }
